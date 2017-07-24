@@ -29,7 +29,7 @@ export default class  tuiPin extends Component {
     renderChildView =(item,i)=>{
        let stylee;
         module === 'roll_tuan' ? stylee={width:0.28*SCREEN_WIDTH,height:0.157333*SCREEN_WIDTH}:null
-        console.log(module)
+        // console.log(module)
      return (
          <TouchableOpacity style={styles.TouchableViewStyle} key={i} activeOpacity={0.95} onPress={this.pinTuan}>
               <Image source={{uri: item.thumb}} style={[styles.scrollViewStyel,stylee]}/>

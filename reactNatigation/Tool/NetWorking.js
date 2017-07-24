@@ -6,9 +6,9 @@ import  NetWorkingFetchBlob from 'react-native-fetch-blob'
 const  Request = {
 
     Header:{
-        'User-Agent': 'ShunLian iPhone 10.2.1/1.3.5',
+        'User-Agent': 'ShunLian android 10.2.1/1.3.5',
         'X-Device-ID': 'F793A113-EAE6-497B-8170-ED71E77A608A',
-        'Accept-Encoding': 'gzip,deflate',
+        // 'Accept-Encoding': 'gzip,deflate',
         'X-Ip': '172.16.17.15',
         'resolution':'750x1334',
 
@@ -40,8 +40,12 @@ const  Request = {
                 }
             })
             .then((request) => {
+                if (request.status === 0){
+                    successCallBack(request.data);
+                }else{
+                    failCallBack(request);
+                }
 
-                successCallBack(request.data);
 
             })
             .catch((error)=>{

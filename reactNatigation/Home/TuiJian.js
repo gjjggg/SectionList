@@ -8,9 +8,9 @@ import {
     Text,
     View,
     Image,
-    FlatList,
     SectionList,
-    TouchableOpacity
+    TouchableOpacity,
+    ActivityIndicator
 } from 'react-native';
 import Config  from  '../Tool/Config'
 import NetWorking from '../Tool/NetWorking'
@@ -28,7 +28,14 @@ export default class tuijian extends Component {
         console.log(this.props.dchannel_id)
 
         this.fetch();
+        this.setTimeout = setTimeout(()=>{
+            this.setState({swiperShow:true});
+        },100)
 
+    }
+
+    componentWillUnmount(){
+        this.setTimeout && clearTimeout(this.setTimeout);
     }
 
 
@@ -66,6 +73,7 @@ export default class tuijian extends Component {
             display_list:null,
             cha_cate:null,
             act_ad:null,
+            swiperShow:false,
 
         };
     }
@@ -151,10 +159,13 @@ export default class tuijian extends Component {
             console.log(error);
         });
     }
+    _fetchMoreData= () =>{
 
+
+    }
 
     renderItem = ({item}) => {
-        console.log(item);
+        // console.log(item);
         return(
             <TouchableOpacity style={[styles.list]} >
                 <Image  source={{uri:item.thumb}}  style={styles.row}  />
@@ -175,6 +186,33 @@ export default class tuijian extends Component {
         )
     }
 
+    renderSwiper(){
+        console.log(this.state.swiperShow);
+        if(this.state.swiperShow){
+            return (
+                <Swiper style={tableHeader.swiperStyle}
+                        autoplay ={true}
+                        height = {SCREEN_WIDTH * 0.333}
+                        dotColor ="white"
+                        activeDotColor = "#ed6d00"
+                        autoplayTimeout={1}
+                        paginationStyle  = {{position: 'absolute', bottom: 5,}}
+                >
+
+                    {this.state.roll_pic.items.map((item, i) => {
+
+                        return <Image key={i} source={{uri: item.img}}
+                                      style={{width: SCREEN_WIDTH, height: SCREEN_WIDTH * 0.333, marginLeft: 0}}/>
+
+                    })}
+
+                </Swiper>
+            );
+        }else {
+            return <View style={{height:SCREEN_WIDTH * 0.333,backgroundColor:'white'}}/>;
+        }
+    }
+
     _renderTableHeader =()=>{
         return(
             this.state.order_list ?
@@ -182,22 +220,11 @@ export default class tuijian extends Component {
                 <View style={{backgroundColor:'#ffffff'}}>
                     {
                    this.state.roll_pic ?
-                    <Swiper style={tableHeader.swiperStyle}
-                            autoplay ={true}
-                            height = {SCREEN_WIDTH*0.333}
-                            dotColor ="white"
-                            activeDotColor = "#ed6d00"
-                            autoplayTimeout={1}
-                            paginationStyle  = {{ position:'absolute',bottom:5,}}
-                    >
 
-                        {this.state.roll_pic.items.map((item,i)=> {
+                         this.renderSwiper()
 
-                            return <Image source={{uri: item.img}} style={{width:SCREEN_WIDTH,height:SCREEN_WIDTH*0.333,marginLeft:0}} />
 
-                        } )}
 
-                    </Swiper>
                             :null
                     }
                     {
@@ -284,10 +311,20 @@ export default class tuijian extends Component {
                     renderItem = {this.renderItem}
                     //滑动
                     stickySectionHeadersEnabled ={false}
-                    keyExtractor={item => item.title}
+                    keyExtractor={item => item.itemId}
                     sections={
                            [{key:'s1',data:this.state.order_list.items}]
                        }
+                    onEndReached={() => this._fetchMoreData()}
+                    onEndReachedThreshold={1}
+                    removeClippedSubviews={ false }
+                    ListFooterComponent={()=>{
+                        return( !this.isRefresh &&
+                            <ActivityIndicator
+                                style={styles.loadDataStyle}
+                            />
+                        )
+                    }}
                 />
                 :
                 null
@@ -438,5 +475,9 @@ const styles = StyleSheet.create({
     tuiLeftImageStyle:{
 
 
+    },
+    loadDataStyle:{
+        marginVertical:20,
+        marginTop:20
     },
 });

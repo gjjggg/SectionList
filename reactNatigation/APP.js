@@ -55,7 +55,7 @@ const MyTab = TabNavigator({
     FenLei: {
         screen: FenLei,
         navigationOptions: {
-            tabBarLabel: '分类',
+            tabBarLabel: 'Menu',
             tabBarIcon: (({thintColor, focused}) => {
                 return (
                     <Image
@@ -107,6 +107,7 @@ const MyTab = TabNavigator({
     swipeEndabled:false,
     animationEnabled:false,
     lazy:true,
+
     tabBarOptions:{
          //activeTintColor:'#ed6d00',
          style:{
@@ -114,10 +115,22 @@ const MyTab = TabNavigator({
          },
         labelStyle:{
             marginBottom:5,
-        }
+        },
+        showIcon:true,
+        indicatorStyle:{
+             height:0,
+        },
+        labelStyle:{
+            color:'#ff8202'
+        },
 
+        style:{
+
+            backgroundColor:'white',
+        },
+        //tintColor:'red',
     },
-    //tintColor:'red',
+
 
 
  });

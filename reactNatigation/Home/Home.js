@@ -93,6 +93,7 @@ export default class Home extends Component {
 
         let url = `${Config.api.baseRootUrl}Channel/lists.json`;
         NetWorking.get(url,(data)=>{
+            console.log(data)
             this.setState({
 
                 allChildArr:data,
