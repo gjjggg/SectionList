@@ -3,6 +3,6 @@
  */
 let basePx = Platform.OS === 'ios' ? 750 : 720;
 
-exports.px2dp = function px2dp(px: number): number {
-    return px / basePx * SCREEN_WIDTH;
-};
+// exports.px2dp = function px2dp(px: number): number {
+//     return px / basePx * SCREEN_WIDTH;
+// };

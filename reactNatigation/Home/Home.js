@@ -140,7 +140,7 @@ export default class Home extends Component {
                 tabBarActiveTextColor = "#ed6d00"
                 tabBarInactiveTextColor = "#c0c0c0"
                 tabBarBackgroundColor='white'
-                 removeClippedSubviews={true}
+                removeClippedSubviews={true}
                 tabBarTextStyle={{fontSize:15}}
                 initialPage = {0}
                 style={{backgroundColor:'white',height:40 }}
