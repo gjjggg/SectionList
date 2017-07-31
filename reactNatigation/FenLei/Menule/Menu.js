@@ -37,6 +37,7 @@ export default class Fenlei extends Component {
     fetch(){
         let url = `${Config.api.baseRootUrl}Category/all.json`
         NetWorking.get(url,(data)=>{
+            console.log(data)
          this.setState({
 
              dataSource:data.categoryList

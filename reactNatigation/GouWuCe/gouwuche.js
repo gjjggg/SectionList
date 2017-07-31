@@ -11,10 +11,14 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-import Linkage from  './linkage.json'
+import linkAge from './linkage.json'
+import  food_spu_tags from './linkagedddd.json'
 import Config from  '../Tool/Config'
 import NetWorking from '../Tool/NetWorking'
-//import CookieManager from 'react-native-cookies'
+import CookieManager from 'react-native-cookies'
+import CarFoodPuTong from  './CarFoodPuTong'
+import CarHeaderPuTong from  './CarHeaderPuTong'
+import CArCellPuTong from './CarCellPuTong'
 export default class gouwuche extends Component {
     static  defaultProps ={
         data: [
@@ -56,79 +60,97 @@ export default class gouwuche extends Component {
       }
     fench(){
         let url = `${Config.api.baseRootUrl}cart/goodsList.json`
-        CookieManager.setFromResponse('https://api-test.shunliandongli.com',
-            'Domain=.api-test.shunliandongli.com; Path=/; Name=api_pin; Value = 11110',
-            'Domain=.api-test.shunliandongli.com; Path=/; Name=api_wskey; Value = c18d7KxfSTtY%2Fe5v%2BLSzCodZ9KEh9qRY9bAPgy3sg5YZ4BI75MSjWl86j60JoVLLRsUSC5%2BgBxlAu2CcgFfc1LHYBR5Szlq8%2B7g%2FxJJKtPMMmSbAYxwJxFAd76gTBcVSJQJA6bEw5OEJBbcnjA', (res) => {
-            // `res` will be true or false depending on success.
-            console.log("Set cookie", res);
-        })
 
+
+
+        CookieManager.getAll((err, res) => {
+            console.log('cookies!');
+            console.log(err);
+            console.log(res);
+        });
         NetWorking.get(url,(data)=>{
             console.log(data)
+            var linkData = linkAge
             this.setState({
-                allData:data
+
+                allData:linkData.data.goodsList
+
             })
+          console.log(this.state.allData)
+
         },(error)=>{
-            console.log(error)
+            var linkData = linkAge.data
+            this.setState({
+
+                allData:linkData.goodsList
+               // allData:food_spu_tags.food_spu_tags
+
+            })
+            console.log(this.state.allData)
+
 
         });
 
-
     }
     componentDidMount() {
-      //  this.fench()
+       this.fench()
 
      }
 
     _header=()=>{
           return(
-              <View style={SectionStyles.sectionHeaderStyle}>
 
-              </View>
-
+             <CarHeaderPuTong style={SectionStyles.sectionHeaderStyle}/>
           )
     }
-    renderItem=({item})=>{
+    renderItem=(item)=>{
           console.log(item)
         return(
-          <View style={SectionStyles.sectionCellStyle}>
 
-          </View>
+           <CArCellPuTong style={SectionStyles.sectionCellStyle} />
         )
     }
     render() {
 
 
         return (
-           // <View style={styles.container}>
-             this.state.data?   <SectionList
+            this.state.allData?
+               <View style={styles.container}>
+                 <SectionList
                     style={styles.SectionStyle}
-                    renderItem = {this.renderItem}
-                   // keyExtractor={item => item.id}
-                    //sections={[ { key: 's1',data:this.state.dataSource[0].item}]}
-                    sections={this.state.data}
+                     //滑动
+                    stickySectionHeadersEnabled ={false}
                     renderSectionHeader={this._header}
-                />:null
-            //     <View style={styles.sectionViewStyle}>
-            //     </View>
-            //
-            // </View>
+                    renderItem = {this.renderItem}
+                    keyExtractor={item => item.cartId}
+                    //sections={[ { key: 's1',data:this.state.data}]}this.state.allData
+                    sections={this.state.allData}
+
+                 />
+               <CarFoodPuTong style={styles.sectionViewStyle} />
+
+
+             </View>
+            :null
+
         );
     }
 }
 const SectionStyles = StyleSheet.create({
+    sectionHeaderStyle:{
+        width:SCREEN_WIDTH,
+        height:(69+15)/2,
+        backgroundColor:'#ffffff',
+
+    },
+
     sectionCellStyle:{
         width:SCREEN_WIDTH,
         height:197/2,
-        backgroundColor:'#5f6ee3',
+        backgroundColor:'#ffffff',
+
 
     },
-    sectionHeaderStyle:{
-        width:SCREEN_WIDTH,
-        height:197/2,
-        backgroundColor:'#3de35a',
-
-    }
 
 
 

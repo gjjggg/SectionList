@@ -1,325 +1,125 @@
 {
-  "food_spu_tags":[
+  "status": "0",
+  "data": {
+    "totalCount": "3",//商品总数
+    "totalPrice": "3225.90",//商品总价
+    "goodsList": [ //商品列表，按商家展示
+      {
+        "sellerid": "305", //商家ID
+        "seller_name": "奇峰商贸有限公司",//商家名称
+        "data": [//商品列表
+          {
+            "cartId": "2631845",//购物车ID
+            "goodsid": "24254",//商品ID
+            "optionid": "169920",//规格ID
+            "total": "1",//购买数量
+            "sellerid": "305",
+            "seller_name": "奇峰商贸有限公司",
+            "title": "【父亲节促销】 创意带散热孔电源线插座收纳盒2个装【qifeng】",//商品标题
+            "thumb": "https://img.shunliandongli.com/attachment/images/2016/06/Z0bvk2B0A5A7uBZ4bzJavgJAgB2qUb.jpg",//商品图片
+            "marketprice": "20.90",//商品价格
+            "unit": "",
+            "g_total": "1491",//商品库存数量
+            "maxbuy": "0",//限购，大于0表示限购数量
+            "go_title": "蓝色",//规格名称
+            "go_marketprice": "20.90",//规格价格
+            "go_stock": "300",//规格库存数量
+            "optionname": "蓝色",//规格名称
+            "totalprice": "20.9",//总价
+            "act_id": "1"  //活动ID
+          }
+        ]
+      },
+      {
+        "sellerid": "495",
+        "seller_name": "杰辉商贸有限公司",
+        "data": [
+          {
+            "cartId": "2631846",
+            "goodsid": "24240",
+            "optionid": "169813",
+            "total": "1",
+            "sellerid": "495",
+            "seller_name": "杰辉商贸有限公司",
+            "title": "【超值3条装】创意带浴花沐浴手套 ",
+            "thumb": "https://img.shunliandongli.com/attachment/images/2016/06/GytappLL65KhlIICAo6ip5Y5T60yY0.jpg",
+            "marketprice": "17.00",
+            "unit": "",
+            "g_total": "452",
+            "maxbuy": "0",
+            "go_title": "超值3条装",
+            "go_marketprice": "17.00",
+            "go_stock": "502",
+            "optionname": "超值3条装",
+            "totalprice": "17",
+            "act_id": "1"  //活动ID
+          },
+          {
+            "cartId": "2631822246",
+            "goodsid": "24240",
+            "optionid": "169813",
+            "total": "1",
+            "sellerid": "495",
+            "seller_name": "杰辉商贸有限公司",
+            "title": "【超值3条装】创意带浴花沐浴手套 ",
+            "thumb": "https://img.shunliandongli.com/attachment/images/2016/06/GytappLL65KhlIICAo6ip5Y5T60yY0.jpg",
+            "marketprice": "17.00",
+            "unit": "",
+            "g_total": "452",
+            "maxbuy": "0",
+            "go_title": "超值3条装",
+            "go_marketprice": "17.00",
+            "go_stock": "502",
+            "optionname": "超值3条装",
+            "totalprice": "17",
+            "act_id": "1"  //活动ID
+          }
+        ]
+      },
+      {
+        "sellerid": "448",
+        "seller_name": "品牌手机专营店",
+        "data": [
+          {
+            "cartId": "263185024",
+            "goodsid": "22648",
+            "optionid": "155695",
+            "total": "1",
+            "sellerid": "448",
+            "seller_name": "品牌手机专营店",
+            "title": "华为 P9 移动/联通/电信 4G手机 双卡双待",
+            "thumb": "https://img.shunliandongli.com/attachment/images/2016/06/nmta55hTNnJAc675566Pntd0zFc0cc.jpg",
+            "marketprice": "3188.00",
+            "unit": "",
+            "g_total": "789",
+            "maxbuy": "0",
+            "go_title": "3GB+32G+全网通（移动/联通/电信 4G）+金色",
+            "go_marketprice": "3188.00",
+            "go_stock": "100",
+            "optionname": "3GB+32G+全网通（移动/联通/电信 4G）+金色",
+            "totalprice": "3188"
+          }, {
+            "cartId": "3433243",
+            "goodsid": "22648",
+            "optionid": "155695",
+            "total": "1",
+            "sellerid": "448",
+            "seller_name": "品牌手机专营店",
+            "title": "华为 P9 移动/联通/电信 4G手机 双卡双待",
+            "thumb": "https://img.shunliandongli.com/attachment/images/2016/06/nmta55hTNnJAc675566Pntd0zFc0cc.jpg",
+            "marketprice": "3188.00",
+            "unit": "",
+            "g_total": "789",
+            "maxbuy": "0",
+            "go_title": "3GB+32G+全网通（移动/联通/电信 4G）+金色",
+            "go_marketprice": "3188.00",
+            "go_stock": "100",
+            "optionname": "3GB+32G+全网通（移动/联通/电信 4G）+金色",
+            "totalprice": "3188"
+          }
+        ]
+      }
+    ]
+  }
 
-    {
-      "title":1,
-      "data":[
-        {
-          "name":"一 nghnh",
-           "key":"1"
-        },
-        {
-          "name":"一 tyui22uyt",
-          "key":"2"
-        },
-        {
-          "name":"一 3fdsfdga",
-          "key":"3"
-        }
-      ]
-    },
-    {
-      "title":2,
-      "data":[
-        {
-          "name":"二 fsd",
-          "key":"4"
-        },
-        {
-          "name":"二 gfdh",
-          "key":"5"
-        },
-        {
-          "name":"二 ghdsfd",
-          "key":"6"
-        },
-        {
-          "name":"二 hkjhg",
-          "key":"7"
-        },
-        {
-          "name":"二 oiuytre",
-          "key":"8"
-        },
-        {
-          "name":"二 phfd",
-          "key":"9"
-        }
-      ]
-    },
-    {
-      "title":3,
-      "data":[
-        {
-          "name":"三 pknbv",
-          "key":"10"
-        },
-        {
-          "name":"三 qazxsef",
-          "key":"11"
-        },
-        {
-          "name":"三 plmnbgf",
-          "key":"12"
-        },
-        {
-          "name":"三 ggggg",
-          "key":"13"
-        },
-        {
-          "name":"三  gfd",
-          "key":"14"
-        },
-        {
-          "name":"三 fgh",
-          "key":"15"
-        },
-        {
-          "name":"三 hhf",
-          "key":"16"
-        },
-        {
-          "name":"三 jff",
-          "key":"17"
-        },
-        {
-          "name":"三 sfgd",
-          "key":"18"
-        },
-        {
-          "name":"三 dffhsd",
-          "key":"19"
-        },
-        {
-          "name":"三 ghd",
-          "key":"20"
-        },
-        {
-          "name":"三 ghsg",
-          "key":"21"
-        }
-      ]
-    },
-    {
-      "title":4,
-      "data":[
-        {
-          "name":"四 ghs",
-          "key":"22"
-        },
-        {
-          "name":"四 hth",
-          "key":"23"
-        }
-      ]
-    },
-    {
-      "title":5,
-      "data":[
-        {
-          "name":"五 teh",
-          "key":"24"
-        },
-        {
-          "name":"五 thtr",
-          "key":"25"
-        },
-        {
-          "name":"五 thereth",
-          "key":"26"
-        },
-        {
-          "name":"五 yefdgs",
-          "key":"27"
-        },
-        {
-          "name":"五 htweh",
-          "key":"28"
-        },
-        {
-          "name":"五 thrhwt",
-          "key":"29"
-        },
-        {
-          "name":"五 geheht",
-          "key":"30"
-        },
-        {
-          "name":"五 thwtw",
-          "key":"31"
-        }
-      ]
-    },
-    {
-      "title":6,
-      "data":[
-        {
-          "name":"六 thsfsg",
-          "key":"32"
-        },
-        {
-          "name":"六 thwfs",
-          "key":"33"
-        },
-        {
-          "name":"六 htsfd",
-          "key":"34"
-        }
-      ]
-    },
-    {
-      "title":7,
-      "data":[
-        {
-          "name":"七 hgshfd",
-          "key":"35"
-        }
-      ]
-    },
-    {
-      "title":8,
-      "data":[
-        {
-          "name":"八 rgdsgsfd",
-          "key":"36"
-        },
-        {
-          "name":"八 grht",
-          "key":"37"
-        },
-        {
-          "name":"八 htrfss",
-          "key":"38"
-        },
-        {
-          "name":"八 thsgfd",
-          "key":"39"
-        },
-        {
-          "name":"八 hthe",
-          "key":"40"
-        },
-        {
-          "name":"八 trgtsf",
-          "key":"41"
-        },
-        {
-          "name":"八 f45f",
-          "key":"42"
-        },
-        {
-          "name":"八 4qtq",
-          "key":"43"
-        },
-        {
-          "name":"八 43f",
-          "key":"44"
-        },
-        {
-          "name":"八 43ff",
-          "key":"45"
-        },
-        {
-          "name":"八 45gwrsfd",
-          "key":"46"
-        }
-      ]
-    },
-    {
-      "title":9,
-      "data":[
-        {
-          "name":"九 43qgf",
-          "key":"47"
-        },
-        {
-          "name":"九 ref3",
-          "key":"48"
-        },
-        {
-          "name":"九 54sf",
-          "key":"49"
-        }
-      ]
-    },
-    {
-      "title":10,
-      "data":[
-        {
-          "name":"十 43refsd",
-          "key":"50"
-        },
-        {
-          "name":"十 43refzd",
-          "key":"51"
-        },
-        {
-          "name":"十 4q3gfd",
-          "key":"52"
-        },
-        {
-          "name":"十 wgf",
-          "key":"53"
-        },
-        {
-          "name":"十 4q3fs",
-          "key":"54"
-        }
-      ]
-    },
-    {
-      "title":11,
-      "data":[
-        {
-          "name":"十一 wrf",
-          "key":"55"
-        },
-        {
-          "name":"十一 5ersf",
-          "key":"56"
-        },
-        {
-          "name":"十一 43fs",
-          "key":"57"
-        },
-        {
-          "name":"十一 43fs",
-          "key":"58"
-        },
-        {
-          "name":"十一 5gs",
-          "key":"59"
-        },
-        {
-          "name":"十一 w5gfsd",
-          "key":"60"
-        },
-        {
-          "name":"十一 4qrgfs",
-          "key":"61"
-        }
-      ]
-    },
-    {
-      "title":12,
-      "data":[
-        {
-          "name":"十二 4wgfsd",
-          "key":"62"
-        },
-        {
-          "name":"十二 w5gfsd",
-          "key":"63"
-        },
-        {
-          "name":"十二 4qgfsgf",
-          "key":"64"
-        },
-        {
-          "name":"十二 3qgsf",
-          "key":"65"
-        }
-      ]
-    }
-  ]
 }
