@@ -9,7 +9,8 @@ import {
     View,
     SectionList,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+
 } from 'react-native';
 import linkAge from './linkage.json'
 import  food_spu_tags from './linkagedddd.json'
@@ -62,27 +63,44 @@ export default class gouwuche extends Component {
         let url = `${Config.api.baseRootUrl}cart/goodsList.json`
 
 
-
         CookieManager.getAll((err, res) => {
-            console.log('cookies!');
-            console.log(err);
-            console.log(res);
+            // console.log('cookies!');
+            // console.log(err);
+            // console.log(res);
         });
         NetWorking.get(url,(data)=>{
-            console.log(data)
-            var linkData = linkAge
+            var linkData = linkAge.data
+            var goodListArr = linkData.goodsList;
+            console.log('kkkkkk')
+            goodListArr.forEach((value, index)=>{
+                goodListArr[index]["flag"] = "NO"
+                goodListArr[index].data.forEach((valueeee, indexxx)=>{
+                    valueeee["flag"] = "NO"
+                })
+            })
+            console.log(goodListArr)
             this.setState({
 
-                allData:linkData.data.goodsList
+                allData:goodListArr
+                // allData:food_spu_tags.food_spu_tags
 
             })
-          console.log(this.state.allData)
+            console.log(this.state.allData)
 
         },(error)=>{
             var linkData = linkAge.data
+            var goodListArr = linkData.goodsList;
+            console.log('kkkkkk')
+            goodListArr.forEach((value, index)=>{
+                value["flag"] = "NO"
+                goodListArr[index].data.forEach((valueeee, indexxx)=>{
+                    valueeee["flag"] = "NO"
+                })
+            })
+            console.log(goodListArr)
             this.setState({
 
-                allData:linkData.goodsList
+                allData:goodListArr
                // allData:food_spu_tags.food_spu_tags
 
             })
@@ -97,21 +115,56 @@ export default class gouwuche extends Component {
 
      }
 
-    _header=()=>{
-          return(
+     _headerSelectedBtn =(section)=>{
 
-             <CarHeaderPuTong style={SectionStyles.sectionHeaderStyle}/>
+         //console.log(section)
+         // 2. 判断
+         var tempallData = this.state.allData;
+         tempallData.forEach((value, index)=>{
+             if (section.section.seller_name === value.seller_name){
+
+                 value["flag"] = "YES"
+                 value.data.forEach((valueeee, indexxx)=>{
+                     valueeee["flag"] = "YES"
+                 })
+
+
+
+             }else {
+
+
+             }
+
+         })
+         this.setState({
+
+             allData:tempallData
+
+         });
+
+
+
+     }
+    _header =(section) =>{
+       // console.log(section)
+
+
+          return(
+              // <View>
+              //
+              // </View>
+             <CarHeaderPuTong style={SectionStyles.sectionHeaderStyle} goodsList={section} selectedHeader = {()=>this._headerSelectedBtn(section)}/>
           )
     }
     renderItem=(item)=>{
-          console.log(item)
+         // console.log(item)
         return(
 
            <CArCellPuTong style={SectionStyles.sectionCellStyle} />
         )
     }
     render() {
-
+       console.log('sdshfsdjfhgsdhjghfdgs')
 
         return (
             this.state.allData?

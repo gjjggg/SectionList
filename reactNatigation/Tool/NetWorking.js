@@ -32,28 +32,28 @@ const  Request = {
         console.log(url);
 
 
-        Cookies.set([{
-            domain: '.api-test.shunliandongli.com',
-            name:'api_pin',
-            value: '11110',
-            Path: '/',
-            version: '',
-            origin: '',
-            expiration: ''
-        },{
-            domain: '.api-test.shunliandongli.com',
-            name:'api_wskey',
-            value: 'c57bvi2Lhmi6TncbUk03d9%2BDL1%2Fjl61II364KYZ%2BOgrWGvHlXnyRnyvnOzhfI4IuMrTbv%2FpO83Z85vUdhAj2a3PlE4aChjq94phyuW4w87NokvL4WLTOipoGX6Tc%2BBHGj8Sj45MX8HWJ2oNNFg',
-            Path: '/',
-            version: '',
-            origin: '',
-            expiration: ''
-
-        }], (err, res) => {
-            console.log('cookie set!');
-            console.log(err);
-            console.log(res);
-        });
+        // Cookies.set([{
+        //     domain: '.api-test.shunliandongli.com',
+        //     name:'api_pin',
+        //     value: '11110',
+        //     Path: '/',
+        //     version: '',
+        //     origin: '',
+        //     expiration: ''
+        // },{
+        //     domain: '.api-test.shunliandongli.com',
+        //     name:'api_wskey',
+        //     value: 'c57bvi2Lhmi6TncbUk03d9%2BDL1%2Fjl61II364KYZ%2BOgrWGvHlXnyRnyvnOzhfI4IuMrTbv%2FpO83Z85vUdhAj2a3PlE4aChjq94phyuW4w87NokvL4WLTOipoGX6Tc%2BBHGj8Sj45MX8HWJ2oNNFg',
+        //     Path: '/',
+        //     version: '',
+        //     origin: '',
+        //     expiration: ''
+        //
+        // }], (err, res) => {
+        //     console.log('cookie set!');
+        //     console.log(err);
+        //     console.log(res);
+        // });
         return NetWorkingFetchBlob
             .config(Request.GetConfig)
             .fetch('GET',url,Request.Header)

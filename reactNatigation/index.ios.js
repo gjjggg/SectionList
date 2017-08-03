@@ -13,11 +13,12 @@ import {
 } from 'react-native';
 import Index from './index'
 import App from './APP';
-
+//import  RootIndex from './RootIndex'
 export default class reactNatigation extends Component {
   render() {
     return (
-         <App  />
+         //<RootIndex  />
+        <App />
     );
   }
 }

@@ -1,5 +1,5 @@
 /**
- * Created by guohongan on 2017/6/13.
+ * Created by guohongan on 2017/8/1.
  */
 import React, { Component } from 'react';
 import {
@@ -8,21 +8,19 @@ import {
     Text,
     View
 } from 'react-native';
-import  Anniu from  './anniu'
-export default class me extends Component {
+import {Provider} from  'react-redux';
+import ConfigureStore from './JS/store/ConfigureStore';
+const store = ConfigureStore();
 
-    static  defaultProps = {
-
-        selectedHeader:React.PropTypes.object,
-
-    }
-    _slecdd=()=>{
-
-        console.log('sssdsd')
-    }
+import App from './APP'
+export default class Root extends Component {
     render() {
         return (
-           <Anniu selectedHeader = {this._slecdd}/>
+            <Provider store={store} >
+
+                <App />
+
+            </Provider>
         );
     }
 }

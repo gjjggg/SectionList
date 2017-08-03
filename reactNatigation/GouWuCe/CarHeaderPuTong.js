@@ -12,19 +12,31 @@ import {
 } from 'react-native';
 
 export default class CarHeaderPuTong extends Component {
+    // static  propTypes ={
+    //     cha_cate:React.PropTypes.object
+    //
+    // }
+    static defaultProps = {
+
+        goodsList:React.PropTypes.object,
+        selectedHeader:React.PropTypes.object,
+
+    }
     render() {
+        //console.log(this.props.goodsList.section)
+        var  aa = this.props.goodsList.section.flag === 'YES' ?require('../images/img_shoppingcar_selected_h@2x.png'):require('../images/img_shoppingcar_selected_n@2x.png')
         return (
             <View style={styles.container}>
                 <View style={styles.xianView}/>
-                <TouchableOpacity style={styles.quanXuanBtn}>
-                    <Image  source={require('../images/img_shoppingcar_selected_n@2x.png')} style={styles.quanXuanImage}/>
+                <TouchableOpacity style={styles.quanXuanBtn} onPress={this.props.selectedHeader} activeOpacity={0.8}>
+                    <Image  source={ aa} style={styles.quanXuanImage}/>
 
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.dianPuBtn}>
+                <TouchableOpacity style={styles.dianPuBtn} onPress={this.props.selectedHeader}>
                     <Image  source={require('../images/icon_shoppingcar_shop@2x.png')} style={styles.dianpuImage}/>
                     <Text style={styles.dianpuText}>
-                        美颜秘笈
+                        {this.props.goodsList.section.seller_name}
                     </Text>
                     <Image  source={require('../images/img_shoppingcar_jiantou@2x.png')} style={styles.dianpujiantouImage}/>
 
@@ -34,6 +46,7 @@ export default class CarHeaderPuTong extends Component {
             </View>
         )
     }
+
 }
 
 const styles = StyleSheet.create({
