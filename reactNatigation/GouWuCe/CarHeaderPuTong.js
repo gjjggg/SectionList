@@ -24,7 +24,7 @@ export default class CarHeaderPuTong extends Component {
     }
     render() {
         //console.log(this.props.goodsList.section)
-        var  aa = this.props.goodsList.section.flag === 'YES' ?require('../images/img_shoppingcar_selected_h@2x.png'):require('../images/img_shoppingcar_selected_n@2x.png')
+        var  aa = this.props.goodsList.flag === 'YES' ?require('../images/img_shoppingcar_selected_h@2x.png'):require('../images/img_shoppingcar_selected_n@2x.png')
         return (
             <View style={styles.container}>
                 <View style={styles.xianView}/>
@@ -36,7 +36,7 @@ export default class CarHeaderPuTong extends Component {
                 <TouchableOpacity style={styles.dianPuBtn} onPress={this.props.selectedHeader}>
                     <Image  source={require('../images/icon_shoppingcar_shop@2x.png')} style={styles.dianpuImage}/>
                     <Text style={styles.dianpuText}>
-                        {this.props.goodsList.section.seller_name}
+                        {this.props.goodsList.seller_name}
                     </Text>
                     <Image  source={require('../images/img_shoppingcar_jiantou@2x.png')} style={styles.dianpujiantouImage}/>
 

@@ -71,40 +71,40 @@ export default class gouwuche extends Component {
         NetWorking.get(url,(data)=>{
             var linkData = linkAge.data
             var goodListArr = linkData.goodsList;
-            console.log('kkkkkk')
+          //  console.log('kkkkkk')
             goodListArr.forEach((value, index)=>{
                 goodListArr[index]["flag"] = "NO"
                 goodListArr[index].data.forEach((valueeee, indexxx)=>{
                     valueeee["flag"] = "NO"
                 })
             })
-            console.log(goodListArr)
+          //  console.log(goodListArr)
             this.setState({
 
                 allData:goodListArr
                 // allData:food_spu_tags.food_spu_tags
 
             })
-            console.log(this.state.allData)
+          //  console.log(this.state.allData)
 
         },(error)=>{
             var linkData = linkAge.data
             var goodListArr = linkData.goodsList;
-            console.log('kkkkkk')
+          //  console.log('kkkkkk')
             goodListArr.forEach((value, index)=>{
                 value["flag"] = "NO"
                 goodListArr[index].data.forEach((valueeee, indexxx)=>{
                     valueeee["flag"] = "NO"
                 })
             })
-            console.log(goodListArr)
+          //  console.log(goodListArr)
             this.setState({
 
                 allData:goodListArr
                // allData:food_spu_tags.food_spu_tags
 
             })
-            console.log(this.state.allData)
+           // console.log(this.state.allData)
 
 
         });
@@ -114,24 +114,72 @@ export default class gouwuche extends Component {
        this.fench()
 
      }
+     _tableCellBtn = ({item,index})=>{
+        console.log(index)
+        console.log(item)
+         var selcetFlag,allRowIndex;
+         if(item.flag === "YES"){
+             selcetFlag = "NO";
+         }else {
+             selcetFlag = "YES"
 
+         }
+         var tempallData = this.state.allData;
+         tempallData.forEach((value,sectionIndex)=>{
+             value.data.forEach((valueee,rowIndex)=>{
+                 if (valueee.cartId === item.cartId){
+                      valueee.flag =  selcetFlag;
+                     allRowIndex = sectionIndex;
+                     console.log('223243432')
+                 }else{
+
+                 }
+             })
+
+         })
+         var  panduanguige = 1;
+         var  goodListArr = tempallData[allRowIndex].data;
+         console.log(goodListArr)
+         goodListArr.forEach((rowvalue,rowIndex)=>{
+             if (rowvalue.flag === "NO"){
+
+                 panduanguige =2;
+             }
+         });
+         if( panduanguige === 1){
+             tempallData[allRowIndex].flag= "YES"
+         }else{
+             tempallData[allRowIndex].flag= "NO"
+         }
+
+
+         this.setState({
+
+             allData:tempallData
+
+         });
+
+     }
      _headerSelectedBtn =(section)=>{
 
          //console.log(section)
          // 2. 判断
+         var selcetFlag;
+         if(section.flag === "YES"){
+             selcetFlag = "NO";
+         }else {
+             selcetFlag = "YES"
+
+         }
+
          var tempallData = this.state.allData;
          tempallData.forEach((value, index)=>{
-             if (section.section.seller_name === value.seller_name){
+             if (section.seller_name === value.seller_name){
 
-                 value["flag"] = "YES"
+                 value["flag"] = selcetFlag
                  value.data.forEach((valueeee, indexxx)=>{
-                     valueeee["flag"] = "YES"
+                     valueeee["flag"] = selcetFlag
                  })
-
-
-
-             }else {
-
 
              }
 
@@ -145,7 +193,7 @@ export default class gouwuche extends Component {
 
 
      }
-    _header =(section) =>{
+    _header =({section}) =>{
        // console.log(section)
 
 
@@ -156,15 +204,16 @@ export default class gouwuche extends Component {
              <CarHeaderPuTong style={SectionStyles.sectionHeaderStyle} goodsList={section} selectedHeader = {()=>this._headerSelectedBtn(section)}/>
           )
     }
-    renderItem=(item)=>{
-         // console.log(item)
+    renderItem=({item,index})=>{
+         // console.log(item)item
+        //console.log(index)
         return(
 
-           <CArCellPuTong style={SectionStyles.sectionCellStyle} />
+           <CArCellPuTong style={SectionStyles.sectionCellStyle} itemArr={item}  selectedCell={()=>this._tableCellBtn({item,index})} />
         )
     }
     render() {
-       console.log('sdshfsdjfhgsdhjghfdgs')
+      // console.log('sdshfsdjfhgsdhjghfdgs')
 
         return (
             this.state.allData?

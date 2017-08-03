@@ -13,24 +13,31 @@ import {
 } from 'react-native';
 
 export default class CarCellPuTong extends Component {
+    static  defaultProps ={
+        itemArr:React.PropTypes.object,
+        selectedCell:React.PropTypes.object,
+
+    }
     render() {
+        console.log(this.props.itemArr)
+        var  aa = this.props.itemArr.flag === 'YES' ?require('../images/img_shoppingcar_selected_h@2x.png'):require('../images/img_shoppingcar_selected_n@2x.png')
         return (
           <TouchableOpacity style={styles.container}>
-              <TouchableOpacity  style={styles.selectBtn}>
-                  <Image source={require('../images/img_shoppingcar_selected_n@2x.png')} style={styles.selectimage}/>
+              <TouchableOpacity  style={styles.selectBtn} onPress={this.props.selectedCell}>
+                  <Image source={aa} style={styles.selectimage}/>
               </TouchableOpacity>
               <Image  style={styles.cellImage}/>
               <View style={styles.viewRifght}>
                   <Text style={styles.titleTextStyle}  numberOfLines={2}>
-                   刁小姐 哈飒飒的嘎哈大哥大法官阿凡达会覆盖大富大贵法规的法规打得过法规的法规噶的还得法规的法规的干哈的发货单发的发挥大换个梵蒂冈
+                      {this.props.itemArr.title}
                   </Text>
 
                   <Text style={styles.guigeStyle}>
-                      颜色：淡粉色
+                      {this.props.itemArr.go_title}
                   </Text>
 
                   <Text style={styles.priceStyle}>
-                      ￥429.00
+                      ￥{this.props.itemArr.go_marketprice}
                   </Text>
 
                   <View style={styles.jiajianStyle}>
