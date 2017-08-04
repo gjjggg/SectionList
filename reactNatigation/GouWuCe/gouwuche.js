@@ -53,7 +53,8 @@ export default class gouwuche extends Component {
         super(props);
         // 初始状态
         this.state = {
-        allData:[]
+        allData:[],
+        diBuPandhuan:React.PropTypes.object
 
 
 
@@ -81,7 +82,8 @@ export default class gouwuche extends Component {
           //  console.log(goodListArr)
             this.setState({
 
-                allData:goodListArr
+                allData:goodListArr,
+                diBuPandhuan:"1"
                 // allData:food_spu_tags.food_spu_tags
 
             })
@@ -100,7 +102,8 @@ export default class gouwuche extends Component {
           //  console.log(goodListArr)
             this.setState({
 
-                allData:goodListArr
+                allData:goodListArr,
+                diBuPandhuan:"1"
                // allData:food_spu_tags.food_spu_tags
 
             })
@@ -112,6 +115,36 @@ export default class gouwuche extends Component {
     }
     componentDidMount() {
        this.fench()
+
+     }
+     _fooddelectedBtn=()=>{
+        var slectFlag  = "NO";
+        var goodListArr = this.state.allData
+         goodListArr.forEach((value, index)=>{
+
+             if ( value["flag"] === "NO"){
+                 slectFlag = "YES"
+             }
+         })
+         goodListArr.forEach((value, index)=>{
+             value["flag"] = slectFlag
+             goodListArr[index].data.forEach((valueeee, indexxx)=>{
+                 valueeee["flag"] = slectFlag
+             })
+         })
+         var dianpupandu;
+         if(slectFlag === "NO"){
+             dianpupandu = "1"
+         }else {
+             dianpupandu = "2"
+         }
+         this.setState({
+
+             allData:goodListArr,
+             diBuPandhuan:dianpupandu
+             // allData:food_spu_tags.food_spu_tags
+
+         })
 
      }
      _tableCellBtn = ({item,index})=>{
@@ -152,10 +185,19 @@ export default class gouwuche extends Component {
              tempallData[allRowIndex].flag= "NO"
          }
 
+         var  panduanguige = "2";
+         var threedtaa = this.state.allData;
+         threedtaa.forEach((value, index)=>{
 
+             if (value.flag === "NO"){
+                 panduanguige ="1" ;
+             }
+
+         })
          this.setState({
 
-             allData:tempallData
+             allData:tempallData,
+             diBuPandhuan:panduanguige
 
          });
 
@@ -172,6 +214,7 @@ export default class gouwuche extends Component {
 
          }
 
+         var  panduanguige = "2";
          var tempallData = this.state.allData;
          tempallData.forEach((value, index)=>{
              if (section.seller_name === value.seller_name){
@@ -182,11 +225,17 @@ export default class gouwuche extends Component {
                  })
 
              }
+             if (value.flag === "NO"){
+                 panduanguige ="1" ;
+             }
 
          })
+
+
          this.setState({
 
-             allData:tempallData
+             allData:tempallData,
+             diBuPandhuan:panduanguige
 
          });
 
@@ -229,7 +278,7 @@ export default class gouwuche extends Component {
                     sections={this.state.allData}
 
                  />
-               <CarFoodPuTong style={styles.sectionViewStyle} />
+               <CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}/>
 
 
              </View>

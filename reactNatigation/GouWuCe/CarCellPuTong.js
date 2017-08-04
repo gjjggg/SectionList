@@ -24,9 +24,9 @@ export default class CarCellPuTong extends Component {
         return (
           <TouchableOpacity style={styles.container}>
               <TouchableOpacity  style={styles.selectBtn} onPress={this.props.selectedCell}>
-                  <Image source={aa} style={styles.selectimage}/>
+                  <Image source={aa}  style={styles.selectimage} />
               </TouchableOpacity>
-              <Image  style={styles.cellImage}/>
+              <Image source={{uri:this.props.itemArr.thumb}} style={styles.cellImage}/>
               <View style={styles.viewRifght}>
                   <Text style={styles.titleTextStyle}  numberOfLines={2}>
                       {this.props.itemArr.title}

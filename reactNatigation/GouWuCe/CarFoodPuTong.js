@@ -12,12 +12,19 @@ import {
 } from 'react-native';
 
 export default class CarFoodPuTong extends Component {
+    static  defaultProps = {
+        itemFooderDelect:React.PropTypes.object,
+        selectedFooderDelect:React.PropTypes.object,
+        //selectedFooderShanChu:React.PropTypes.object,
+      //  selectedFooderShouCang:Rect.PropTypes.object,
+    }
     render() {
+        var  aa = this.props.itemFooderDelect === '2' ?require('../images/img_shoppingcar_selected_h@2x.png'):require('../images/img_shoppingcar_selected_n@2x.png')
         return (
             <View style={styles.container}>
                 <View style={styles.xianView}/>
-                <TouchableOpacity style={styles.quanXuanBtn}>
-                    <Image  source={require('../images/img_shoppingcar_selected_n@2x.png')} style={styles.quanXuanImage}/>
+                <TouchableOpacity style={styles.quanXuanBtn} onPress={this.props.selectedFooderDelect}>
+                    <Image  source={aa} style={styles.quanXuanImage}/>
                     <Text style={styles.quanXuanText}>
                         全选
                     </Text>
@@ -29,7 +36,7 @@ export default class CarFoodPuTong extends Component {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.shoucangBtn}>
+                <TouchableOpacity style={styles.shoucangBtn} >
                     <Text style={styles.shoucangText}>
                         收藏
                     </Text>
