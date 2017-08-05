@@ -20,6 +20,7 @@ import CookieManager from 'react-native-cookies'
 import CarFoodPuTong from  './CarFoodPuTong'
 import CarHeaderPuTong from  './CarHeaderPuTong'
 import CArCellPuTong from './CarCellPuTong'
+import CarFooderJieSuan from  './CarFoodJieSuan'
 export default class gouwuche extends Component {
     static  defaultProps ={
         data: [
@@ -263,7 +264,17 @@ export default class gouwuche extends Component {
     }
     render() {
       // console.log('sdshfsdjfhgsdhjghfdgs')
+// <CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}/>
+        var allpriceQuan = 0.00;
+        var tempallData = this.state.allData;
+        tempallData.forEach((value,sectionIndex)=>{
+            value.data.forEach((valueee,rowIndex)=>{
+                if (valueee.flag === "YES"){
+                    allpriceQuan = parseFloat(valueee.marketprice)+allpriceQuan;
+                }
+            })
 
+        })
         return (
             this.state.allData?
                <View style={styles.container}>
@@ -278,14 +289,26 @@ export default class gouwuche extends Component {
                     sections={this.state.allData}
 
                  />
-               <CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}/>
+
+                   <CarFooderJieSuan style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan}  allPrice={allpriceQuan} selectedFooderDelect={this._fooddelectedBtn}/>
 
 
              </View>
             :null
 
         );
+
     }
+    static  navigationOptions = ({navigation,screenProps}) => ({
+        header:(
+
+            <NavigateView  searchKuang={ () => navigation.state.params.shouSuoOnPress(navigation) }
+                           searchButton={ ()=>navigation.state.params.shouSuoOnPress(navigation) }
+                           navtitle = {navigation.state.params?navigation.state.params.title:'jaja'}
+
+            />
+        )
+    });
 }
 const SectionStyles = StyleSheet.create({
     sectionHeaderStyle:{
