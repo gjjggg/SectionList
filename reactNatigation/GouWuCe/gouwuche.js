@@ -159,7 +159,7 @@ export default class gouwuche extends Component {
             value.data.forEach((valueee, rowIndex) => {
                 if (valueee.cartId === item.cartId) {
                     valueee.total = String(parseFloat(valueee.total)+1)
-                   
+
                 }
             });
 
@@ -403,7 +403,7 @@ export default class gouwuche extends Component {
         console.log(this.state.allData)
         return (
 
-            this.state.allData  == null ?
+            this.state.allData.length  == 0 ?
                 <View style={[styles.container,{backgroundColor:'white'}]}>
                     <Text>
                         暂无商品
