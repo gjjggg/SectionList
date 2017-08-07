@@ -438,7 +438,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     SectionStyle:{
-        backgroundColor:'blue',
+        backgroundColor:'#f4f4f4',
         width:SCREEN_WIDTH,
         height:SCREEN_HEIGHT-98/2-64
 
