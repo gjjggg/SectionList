@@ -15,8 +15,8 @@ export default class CarFoodPuTong extends Component {
     static  defaultProps = {
         itemFooderDelect:React.PropTypes.object,
         selectedFooderDelect:React.PropTypes.object,
-        //selectedFooderShanChu:React.PropTypes.object,
-      //  selectedFooderShouCang:Rect.PropTypes.object,
+      //  selectedFooderShanChu:React.PropTypes.object,
+        selectedFooderShouCang:React.PropTypes.object,
     }
     render() {
         var  aa = this.props.itemFooderDelect === '2' ?require('../images/img_shoppingcar_selected_h@2x.png'):require('../images/img_shoppingcar_selected_n@2x.png')
@@ -30,13 +30,13 @@ export default class CarFoodPuTong extends Component {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.shanchuBtn}>
+                <TouchableOpacity style={styles.shanchuBtn} onPress={this.props.selectedFooderShanChu}>
                     <Text style={styles.shangchuText}>
                         删除
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.shoucangBtn} >
+                <TouchableOpacity style={styles.shoucangBtn} onPress={this.props.selectedFooderShouCang}>
                     <Text style={styles.shoucangText}>
                         收藏
                     </Text>

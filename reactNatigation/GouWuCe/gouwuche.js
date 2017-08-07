@@ -21,6 +21,7 @@ import CarFoodPuTong from  './CarFoodPuTong'
 import CarHeaderPuTong from  './CarHeaderPuTong'
 import CArCellPuTong from './CarCellPuTong'
 import CarFooderJieSuan from  './CarFoodJieSuan'
+import NavigatorView from  './CarNavigteView'
 export default class gouwuche extends Component {
     static  defaultProps ={
         data: [
@@ -55,7 +56,8 @@ export default class gouwuche extends Component {
         // 初始状态
         this.state = {
         allData:[],
-        diBuPandhuan:React.PropTypes.object
+        diBuPandhuan:React.PropTypes.object,
+        bianjiNavBtn:"编辑",
 
 
 
@@ -84,7 +86,8 @@ export default class gouwuche extends Component {
             this.setState({
 
                 allData:goodListArr,
-                diBuPandhuan:"1"
+                diBuPandhuan:"1",
+                bianjiNavBtn:"编辑"
                 // allData:food_spu_tags.food_spu_tags
 
             })
@@ -104,9 +107,9 @@ export default class gouwuche extends Component {
             this.setState({
 
                 allData:goodListArr,
-                diBuPandhuan:"1"
+                diBuPandhuan:"1",
                // allData:food_spu_tags.food_spu_tags
-
+                bianjiNavBtn:"编辑"
             })
            // console.log(this.state.allData)
 
@@ -115,9 +118,85 @@ export default class gouwuche extends Component {
 
     }
     componentDidMount() {
-       this.fench()
+        this.fench()
+        console.log(this.state.bianjiNavBtn)
+       const {dispatch,goBack,navigate,setParams,state} = this.props.navigation;
+        this.props.navigation.setParams({ 
+            title:this.state.bianjiNavBtn, 
+            btnJiOnPress:this.btnJiOnPress 
+        });
+
 
      }
+    btnJiOnPress = (navigation) => { 
+
+        var  bianji = this.state.bianjiNavBtn==="完成"?"编辑":"完成"
+        console.log({bianji})
+        this.setState({
+
+            // allData:tempallData,
+            // diBuPandhuan:panduanguige
+            bianjiNavBtn:bianji
+
+        });
+
+
+    }
+    _FooderPuTongShanChu=()=>{
+
+        var goodListArr = this.state.allData;
+
+        //
+        // this.state.allData.forEach((value, index)=>{
+        //
+        //     if ( value["flag"] === "YES"){
+        //         console.log('kdjfhdsghfjdgfdjghshfdgdgkfdgdsfjdhfgfdjhgdfghdbfvfhbvfdgvbdfvbdfhvdfbvhdfvfvfhvhfvb')
+        //        goodListArr.splice(index, 1);
+        //        // goodListArr.remove(index-1)
+        //         --index
+        //     }else{
+        //     value.data.forEach((valueeee, indexxx)=>{
+        //         if ( valueeee["flag"] === "YES") {
+        //             goodListArrvalue.data.splice(indexxx, 1);
+        //            // value.data.remove(indexxx)
+        //             --index
+        //         }
+        //     })
+        //     }
+        // })
+        for(let i=0;i<goodListArr.length;i++){
+            if(goodListArr[i]["flag"]=== "YES"){
+                goodListArr.splice(i, 1);
+                i--;
+            }else{
+            var goodDataArr = goodListArr[i]["data"];
+           for (var j=0;j<goodDataArr.length;j++){
+
+               if(goodDataArr[j]["flag"]=== "YES") {
+                   goodListArr[i]["data"].splice(j, 1);
+                   j--;
+               }
+           }
+            }
+       }
+
+       console.log(goodListArr)
+         var  panduanguige = "2";
+        goodListArr.forEach((value, index)=>{  
+             if (value.flag === "NO"){ 
+                 panduanguige ="1" ; 
+             }  
+         })
+        this.setState({
+
+             allData:goodListArr,
+             diBuPandhuan:panduanguige
+            //bianjiNavBtn:bianji
+
+        });
+
+
+    }
      _fooddelectedBtn=()=>{
         var slectFlag  = "NO";
         var goodListArr = this.state.allData
@@ -251,7 +330,7 @@ export default class gouwuche extends Component {
               // <View>
               //
               // </View>
-             <CarHeaderPuTong style={SectionStyles.sectionHeaderStyle} goodsList={section} selectedHeader = {()=>this._headerSelectedBtn(section)}/>
+             <CarHeaderPuTong key={section.sellerid} style={SectionStyles.sectionHeaderStyle} goodsList={section} selectedHeader = {()=>this._headerSelectedBtn(section)}/>
           )
     }
     renderItem=({item,index})=>{
@@ -275,8 +354,10 @@ export default class gouwuche extends Component {
             })
 
         })
+      console.log('chsdghdsfgdhfdsghdbvcvcb cv bncv chdfvhdfvdghvdbvcvncxbvcxhvjhcjxz')
         return (
-            this.state.allData?
+
+            this.state.allData.length>0?
                <View style={styles.container}>
                  <SectionList
                     style={styles.SectionStyle}
@@ -284,17 +365,27 @@ export default class gouwuche extends Component {
                     stickySectionHeadersEnabled ={false}
                     renderSectionHeader={this._header}
                     renderItem = {this.renderItem}
-                    keyExtractor={item => item.cartId}
+                    keyExtractor={(item, index)=>`key-${item.cartId}`}
+                    //keyExtractor: (item, index) => 'key-${index}
                     //sections={[ { key: 's1',data:this.state.data}]}this.state.allData
                     sections={this.state.allData}
 
                  />
-
+                   {
+                    this.state.bianjiNavBtn==="编辑"?
                    <CarFooderJieSuan style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan}  allPrice={allpriceQuan} selectedFooderDelect={this._fooddelectedBtn}/>
-
+                   :<CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}
+                                   selectedFooderShanChu={this._FooderPuTongShanChu}/>
+                   }
 
              </View>
-            :null
+            :
+                <View style={[styles.container,{backgroundColor:'white'}]}>
+                    <Text>
+                        暂无商品
+                    </Text>
+
+                </View>
 
         );
 
@@ -302,9 +393,9 @@ export default class gouwuche extends Component {
     static  navigationOptions = ({navigation,screenProps}) => ({
         header:(
 
-            <NavigateView  searchKuang={ () => navigation.state.params.shouSuoOnPress(navigation) }
-                           searchButton={ ()=>navigation.state.params.shouSuoOnPress(navigation) }
-                           navtitle = {navigation.state.params?navigation.state.params.title:'jaja'}
+            <NavigatorView
+                           searchButton={()=>navigation.state.params.btnJiOnPress(navigation) }
+                            bianjiBtn = {navigation.state.params?navigation.state.params.title:'编辑'}
 
             />
         )
