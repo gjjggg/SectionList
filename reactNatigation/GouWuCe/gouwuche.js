@@ -128,6 +128,48 @@ export default class gouwuche extends Component {
 
 
      }
+    cellJianNumberPress =({item,index})=>{
+
+        var tempallData = this.state.allData;
+        if (item.total === "1"){
+
+        }else {
+            console.log("sdsfshdfhsdfghdsfdgs")
+
+            tempallData.forEach((value, sectionIndex) => {
+                value.data.forEach((valueee, rowIndex) => {
+                    if (valueee.cartId === item.cartId) {
+                       valueee.total = String(parseFloat(valueee.total)-1)
+                //
+                  }
+                });
+
+            });
+        }
+
+        this.setState({
+
+            allData:tempallData,
+
+        });
+    }
+    cellAddNumberPress =({item,index})=>{
+        var tempallData = this.state.allData;
+        tempallData.forEach((value, sectionIndex) => {
+            value.data.forEach((valueee, rowIndex) => {
+                if (valueee.cartId === item.cartId) {
+                    valueee.total = String(parseFloat(valueee.total)+1)
+                   
+                }
+            });
+
+        });
+        this.setState({
+
+            allData:tempallData,
+
+        });
+    }
     btnJiOnPress = (navigation) => { 
 
         var  bianji = this.state.bianjiNavBtn==="完成"?"编辑":"完成"
@@ -333,12 +375,15 @@ export default class gouwuche extends Component {
              <CarHeaderPuTong key={section.sellerid} style={SectionStyles.sectionHeaderStyle} goodsList={section} selectedHeader = {()=>this._headerSelectedBtn(section)}/>
           )
     }
-    renderItem=({item,index})=>{
+    renderItem=({item,index,section})=>{
          // console.log(item)item
-        //console.log(index)
         return(
 
-           <CArCellPuTong style={SectionStyles.sectionCellStyle} itemArr={item}  selectedCell={()=>this._tableCellBtn({item,index})} />
+           <CArCellPuTong style={SectionStyles.sectionCellStyle} itemArr={item}
+                          selectedCell={()=>this._tableCellBtn({item,index})}
+                           addNumberBtn={()=>this.cellAddNumberPress({item,index})}
+                           jianNumberBtn={()=>this.cellJianNumberPress({item,index})}
+           />
         )
     }
     render() {
@@ -355,37 +400,38 @@ export default class gouwuche extends Component {
 
         })
       console.log('chsdghdsfgdhfdsghdbvcvcb cv bncv chdfvhdfvdghvdbvcvncxbvcxhvjhcjxz')
+        console.log(this.state.allData)
         return (
 
-            this.state.allData.length>0?
-               <View style={styles.container}>
-                 <SectionList
-                    style={styles.SectionStyle}
-                     //滑动
-                    stickySectionHeadersEnabled ={false}
-                    renderSectionHeader={this._header}
-                    renderItem = {this.renderItem}
-                    keyExtractor={(item, index)=>`key-${item.cartId}`}
-                    //keyExtractor: (item, index) => 'key-${index}
-                    //sections={[ { key: 's1',data:this.state.data}]}this.state.allData
-                    sections={this.state.allData}
-
-                 />
-                   {
-                    this.state.bianjiNavBtn==="编辑"?
-                   <CarFooderJieSuan style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan}  allPrice={allpriceQuan} selectedFooderDelect={this._fooddelectedBtn}/>
-                   :<CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}
-                                   selectedFooderShanChu={this._FooderPuTongShanChu}/>
-                   }
-
-             </View>
-            :
+            this.state.allData  == null ?
                 <View style={[styles.container,{backgroundColor:'white'}]}>
                     <Text>
                         暂无商品
                     </Text>
 
                 </View>
+            :  <View style={styles.container}>
+                    <SectionList
+                        style={styles.SectionStyle}
+                        //滑动
+                        stickySectionHeadersEnabled ={false}
+                        renderSectionHeader={this._header}
+                        renderItem = {this.renderItem}
+                        keyExtractor={(item, index)=>`key-${item.cartId}`}
+                        //keyExtractor: (item, index) => 'key-${index}
+                        //sections={[ { key: 's1',data:this.state.data}]}this.state.allData
+                        sections={this.state.allData}
+
+                    />
+                    {
+                        this.state.bianjiNavBtn==="编辑"?
+                            <CarFooderJieSuan style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan}  allPrice={allpriceQuan} selectedFooderDelect={this._fooddelectedBtn}/>
+                            :<CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}
+                                            selectedFooderShanChu={this._FooderPuTongShanChu}/>
+                    }
+
+                </View>
+
 
         );
 

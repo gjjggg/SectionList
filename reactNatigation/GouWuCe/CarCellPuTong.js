@@ -16,6 +16,8 @@ export default class CarCellPuTong extends Component {
     static  defaultProps ={
         itemArr:React.PropTypes.object,
         selectedCell:React.PropTypes.object,
+        addNumberBtn:React.PropTypes.object,
+        jianNumberBtn:React.PropTypes.object,
 
     }
     render() {
@@ -41,16 +43,17 @@ export default class CarCellPuTong extends Component {
                   </Text>
 
                   <View style={styles.jiajianStyle}>
-                       <TouchableOpacity style={styles.leftjianBtn}>
+                       <TouchableOpacity style={styles.leftjianBtn} onPress={this.props.jianNumberBtn}>
                            <Image style={styles.leftjianImage} source={require('../images/bg_shoppingcar_jian@2x.png')} />
                        </TouchableOpacity>
                       <TextInput
-                         value={1}
+                         value={this.props.itemArr.total}
                          style={styles.textInputStyle}
-
+                         keyboardType='numeric'
+                         multiline = {true}
 
                       />
-                      <TouchableOpacity style={styles.rightjiaBtn}>
+                      <TouchableOpacity style={styles.rightjiaBtn} onPress={this.props.addNumberBtn}>
                           <Image style={styles.rightjiaImage} source={require('../images/bg_shoppingcar_jia@2x.png')} />
                       </TouchableOpacity>
                   </View>
@@ -149,7 +152,14 @@ const styles = StyleSheet.create({
         marginLeft:0,
         width:44/2,
         height:42/2,
-        backgroundColor:'#d67686'
+        backgroundColor:'#ffffff',
+        borderColor:'#f4f4f4',
+        borderWidth:1,
+        //textAlignVertical: 'center'
+        textAlign:'center'
+       // fontSize:'14',
+       //  justifyContent:'center',
+       //  alignItems:'center'
 
     },
     rightjiaBtn:{
