@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         marginTop:15/2,
         width:168/2,
         height:168/2,
-        backgroundColor: 'red',
+        backgroundColor: '#f4f4f4',
     },
     viewRifght:{
        marginTop:0,

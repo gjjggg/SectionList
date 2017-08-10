@@ -9,10 +9,12 @@ import {
     View
 } from 'react-native';
 import Menu from  './Menule/Menu'
+import ZheXian from '../Me/ZheXianJs'
 export default class Fenlei extends Component {
     render() {
         return (
-           <Menu />
+           //<Menu />
+            <ZheXian />
         );
     }
 }
