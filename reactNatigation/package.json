@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.3",
+    "react-native-chart": "^1.0.8-beta",
     "react-native-cookies": "^3.1.0",
     "react-native-fetch-blob": "^0.10.5",
     "react-native-scrollable-tab-view": "^0.6.5",

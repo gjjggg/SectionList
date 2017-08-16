@@ -35,6 +35,7 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* reactNatigationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* reactNatigationTests.m */; };
 		3E04FAC74BBC4D5F9EC64114 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6748246FFC494B2C8C8C0EDE /* libRNFetchBlob.a */; };
+		49AFBD461F42F78E002B9BC9 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CEA27D1F3DAAED00B43831 /* libART.a */; };
 		5D0FF7652C2A42E8817B308D /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E8141C0CE14DE497B03DF8 /* libRNCookieManagerIOS.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -82,13 +83,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = reactNatigation;
-		};
-		04D47E971F34CCC900A358ED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45445248833C4C2384DE6B0B /* RNCookieManagerIOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1BD725DA1CF77A8B005DBD79;
-			remoteInfo = RNCookieManagerIOS;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -209,6 +203,20 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		49A9B1941F2983210023A030 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFA32113A6894F8C9631B06D /* RNCookieManagerIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1BD725DA1CF77A8B005DBD79;
+			remoteInfo = RNCookieManagerIOS;
+		};
+		49CEA27C1F3DAAED00B43831 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49CEA2781F3DAAED00B43831 /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = ART;
+		};
 		49F8E0F21EF8C8CA0024540A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1FF583F68224F7E88750C01 /* RNFetchBlob.xcodeproj */;
@@ -269,12 +277,13 @@
 		16E8141C0CE14DE497B03DF8 /* libRNCookieManagerIOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCookieManagerIOS.a; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* reactNatigation-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reactNatigation-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* reactNatigation-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "reactNatigation-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45445248833C4C2384DE6B0B /* RNCookieManagerIOS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCookieManagerIOS.xcodeproj; path = "../node_modules/react-native-cookies/RNCookieManagerIOS.xcodeproj"; sourceTree = "<group>"; };
+		49CEA2781F3DAAED00B43831 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6748246FFC494B2C8C8C0EDE /* libRNFetchBlob.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFetchBlob.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		E1FF583F68224F7E88750C01 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
+		FFA32113A6894F8C9631B06D /* RNCookieManagerIOS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCookieManagerIOS.xcodeproj; path = "../node_modules/react-native-cookies/RNCookieManagerIOS.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AFBD461F42F78E002B9BC9 /* libART.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -390,14 +400,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		04D47E7B1F34CCC900A358ED /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				04D47E981F34CCC900A358ED /* libRNCookieManagerIOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,12 +448,28 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		49A9B1781F2983210023A030 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49A9B1951F2983210023A030 /* libRNCookieManagerIOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		49A9B1971F2984600023A030 /* CookieManager */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = CookieManager;
 			path = reactNatigation/CookieManager;
+			sourceTree = "<group>";
+		};
+		49CEA2791F3DAAED00B43831 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49CEA27D1F3DAAED00B43831 /* libART.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		49F8E0D41EF8C8CA0024540A /* Products */ = {
@@ -483,6 +501,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				49CEA2781F3DAAED00B43831 /* ART.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -495,7 +514,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				E1FF583F68224F7E88750C01 /* RNFetchBlob.xcodeproj */,
-				45445248833C4C2384DE6B0B /* RNCookieManagerIOS.xcodeproj */,
+				FFA32113A6894F8C9631B06D /* RNCookieManagerIOS.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -651,6 +670,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 49CEA2791F3DAAED00B43831 /* Products */;
+					ProjectRef = 49CEA2781F3DAAED00B43831 /* ART.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
@@ -695,8 +718,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 04D47E7B1F34CCC900A358ED /* Products */;
-					ProjectRef = 45445248833C4C2384DE6B0B /* RNCookieManagerIOS.xcodeproj */;
+					ProductGroup = 49A9B1781F2983210023A030 /* Products */;
+					ProjectRef = FFA32113A6894F8C9631B06D /* RNCookieManagerIOS.xcodeproj */;
 				},
 				{
 					ProductGroup = 49F8E0D41EF8C8CA0024540A /* Products */;
@@ -747,13 +770,6 @@
 			fileType = archive.ar;
 			path = libRCTVibration.a;
 			remoteRef = 00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		04D47E981F34CCC900A358ED /* libRNCookieManagerIOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCookieManagerIOS.a;
-			remoteRef = 04D47E971F34CCC900A358ED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
@@ -866,6 +882,20 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		49A9B1951F2983210023A030 /* libRNCookieManagerIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCookieManagerIOS.a;
+			remoteRef = 49A9B1941F2983210023A030 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		49CEA27D1F3DAAED00B43831 /* libART.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libART.a;
+			remoteRef = 49CEA27C1F3DAAED00B43831 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		49F8E0F31EF8C8CA0024540A /* libRNFetchBlob.a */ = {
@@ -1046,7 +1076,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
-					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 				);
 				INFOPLIST_FILE = reactNatigationTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1074,7 +1103,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 				);
 				INFOPLIST_FILE = reactNatigationTests/Info.plist;
@@ -1107,7 +1135,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
-					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 				);
 				INFOPLIST_FILE = reactNatigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1133,7 +1160,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 				);
 				INFOPLIST_FILE = reactNatigation/Info.plist;
@@ -1165,7 +1191,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 				);
 				INFOPLIST_FILE = "reactNatigation-tvOS/Info.plist";
@@ -1203,7 +1228,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 					"$(SRCROOT)/../node_modules/react-native-cookies/RNCookieManagerIOS",
 				);
 				INFOPLIST_FILE = "reactNatigation-tvOS/Info.plist";

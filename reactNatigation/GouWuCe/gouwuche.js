@@ -20,6 +20,8 @@ import CookieManager from 'react-native-cookies'
 import CarFoodPuTong from  './CarFoodPuTong'
 import CarHeaderPuTong from  './CarHeaderPuTong'
 import CArCellPuTong from './CarCellPuTong'
+import CarFooderJieSuan from  './CarFoodJieSuan'
+import NavigatorView from  './CarNavigteView'
 export default class gouwuche extends Component {
     static  defaultProps ={
         data: [
@@ -54,7 +56,8 @@ export default class gouwuche extends Component {
         // 初始状态
         this.state = {
         allData:[],
-        diBuPandhuan:React.PropTypes.object
+        diBuPandhuan:React.PropTypes.object,
+        bianjiNavBtn:"编辑",
 
 
 
@@ -83,7 +86,8 @@ export default class gouwuche extends Component {
             this.setState({
 
                 allData:goodListArr,
-                diBuPandhuan:"1"
+                diBuPandhuan:"1",
+                bianjiNavBtn:"编辑"
                 // allData:food_spu_tags.food_spu_tags
 
             })
@@ -103,9 +107,9 @@ export default class gouwuche extends Component {
             this.setState({
 
                 allData:goodListArr,
-                diBuPandhuan:"1"
+                diBuPandhuan:"1",
                // allData:food_spu_tags.food_spu_tags
-
+                bianjiNavBtn:"编辑"
             })
            // console.log(this.state.allData)
 
@@ -114,9 +118,127 @@ export default class gouwuche extends Component {
 
     }
     componentDidMount() {
-       this.fench()
+        this.fench()
+        console.log(this.state.bianjiNavBtn)
+       const {dispatch,goBack,navigate,setParams,state} = this.props.navigation;
+        this.props.navigation.setParams({ 
+            title:this.state.bianjiNavBtn, 
+            btnJiOnPress:this.btnJiOnPress 
+        });
+
 
      }
+    cellJianNumberPress =({item,index})=>{
+
+        var tempallData = this.state.allData;
+        if (item.total === "1"){
+
+        }else {
+            console.log("sdsfshdfhsdfghdsfdgs")
+
+            tempallData.forEach((value, sectionIndex) => {
+                value.data.forEach((valueee, rowIndex) => {
+                    if (valueee.cartId === item.cartId) {
+                       valueee.total = String(parseFloat(valueee.total)-1)
+                //
+                  }
+                });
+
+            });
+        }
+
+        this.setState({
+
+            allData:tempallData,
+
+        });
+    }
+    cellAddNumberPress =({item,index})=>{
+        var tempallData = this.state.allData;
+        tempallData.forEach((value, sectionIndex) => {
+            value.data.forEach((valueee, rowIndex) => {
+                if (valueee.cartId === item.cartId) {
+                    valueee.total = String(parseFloat(valueee.total)+1)
+
+                }
+            });
+
+        });
+        this.setState({
+
+            allData:tempallData,
+
+        });
+    }
+    btnJiOnPress = (navigation) => { 
+
+        var  bianji = this.state.bianjiNavBtn==="完成"?"编辑":"完成"
+        console.log({bianji})
+        this.setState({
+
+            // allData:tempallData,
+            // diBuPandhuan:panduanguige
+            bianjiNavBtn:bianji
+
+        });
+
+
+    }
+    _FooderPuTongShanChu=()=>{
+
+        var goodListArr = this.state.allData;
+
+        //
+        // this.state.allData.forEach((value, index)=>{
+        //
+        //     if ( value["flag"] === "YES"){
+        //         console.log('kdjfhdsghfjdgfdjghshfdgdgkfdgdsfjdhfgfdjhgdfghdbfvfhbvfdgvbdfvbdfhvdfbvhdfvfvfhvhfvb')
+        //        goodListArr.splice(index, 1);
+        //        // goodListArr.remove(index-1)
+        //         --index
+        //     }else{
+        //     value.data.forEach((valueeee, indexxx)=>{
+        //         if ( valueeee["flag"] === "YES") {
+        //             goodListArrvalue.data.splice(indexxx, 1);
+        //            // value.data.remove(indexxx)
+        //             --index
+        //         }
+        //     })
+        //     }
+        // })
+        for(let i=0;i<goodListArr.length;i++){
+            if(goodListArr[i]["flag"]=== "YES"){
+                goodListArr.splice(i, 1);
+                i--;
+            }else{
+            var goodDataArr = goodListArr[i]["data"];
+           for (var j=0;j<goodDataArr.length;j++){
+
+               if(goodDataArr[j]["flag"]=== "YES") {
+                   goodListArr[i]["data"].splice(j, 1);
+                   j--;
+               }
+           }
+            }
+       }
+
+       console.log(goodListArr)
+         var  panduanguige = "2";
+        goodListArr.forEach((value, index)=>{  
+             if (value.flag === "NO"){ 
+                 panduanguige ="1" ; 
+             }  
+         })
+        this.setState({
+
+             allData:goodListArr,
+             diBuPandhuan:panduanguige
+            //bianjiNavBtn:bianji
+
+        });
+
+
+    }
      _fooddelectedBtn=()=>{
         var slectFlag  = "NO";
         var goodListArr = this.state.allData
@@ -250,42 +372,80 @@ export default class gouwuche extends Component {
               // <View>
               //
               // </View>
-             <CarHeaderPuTong style={SectionStyles.sectionHeaderStyle} goodsList={section} selectedHeader = {()=>this._headerSelectedBtn(section)}/>
+             <CarHeaderPuTong key={section.sellerid} style={SectionStyles.sectionHeaderStyle} goodsList={section} selectedHeader = {()=>this._headerSelectedBtn(section)}/>
           )
     }
-    renderItem=({item,index})=>{
+    renderItem=({item,index,section})=>{
          // console.log(item)item
-        //console.log(index)
         return(
 
-           <CArCellPuTong style={SectionStyles.sectionCellStyle} itemArr={item}  selectedCell={()=>this._tableCellBtn({item,index})} />
+           <CArCellPuTong style={SectionStyles.sectionCellStyle} itemArr={item}
+                          selectedCell={()=>this._tableCellBtn({item,index})}
+                           addNumberBtn={()=>this.cellAddNumberPress({item,index})}
+                           jianNumberBtn={()=>this.cellJianNumberPress({item,index})}
+           />
         )
     }
     render() {
       // console.log('sdshfsdjfhgsdhjghfdgs')
+// <CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}/>
+        var allpriceQuan = 0.00;
+        var tempallData = this.state.allData;
+        tempallData.forEach((value,sectionIndex)=>{
+            value.data.forEach((valueee,rowIndex)=>{
+                if (valueee.flag === "YES"){
+                    allpriceQuan = parseFloat(valueee.marketprice)+allpriceQuan;
+                }
+            })
 
+        })
+      console.log('chsdghdsfgdhfdsghdbvcvcb cv bncv chdfvhdfvdghvdbvcvncxbvcxhvjhcjxz')
+        console.log(this.state.allData)
         return (
-            this.state.allData?
-               <View style={styles.container}>
-                 <SectionList
-                    style={styles.SectionStyle}
-                     //滑动
-                    stickySectionHeadersEnabled ={false}
-                    renderSectionHeader={this._header}
-                    renderItem = {this.renderItem}
-                    keyExtractor={item => item.cartId}
-                    //sections={[ { key: 's1',data:this.state.data}]}this.state.allData
-                    sections={this.state.allData}
 
-                 />
-               <CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}/>
+            this.state.allData.length  == 0 ?
+                <View style={[styles.container,{backgroundColor:'white'}]}>
+                    <Text>
+                        暂无商品
+                    </Text>
 
+                </View>
+            :  <View style={styles.container}>
+                    <SectionList
+                        style={styles.SectionStyle}
+                        //滑动
+                        stickySectionHeadersEnabled ={false}
+                        renderSectionHeader={this._header}
+                        renderItem = {this.renderItem}
+                        keyExtractor={(item, index)=>`key-${item.cartId}`}
+                        //keyExtractor: (item, index) => 'key-${index}
+                        //sections={[ { key: 's1',data:this.state.data}]}this.state.allData
+                        sections={this.state.allData}
 
-             </View>
-            :null
+                    />
+                    {
+                        this.state.bianjiNavBtn==="编辑"?
+                            <CarFooderJieSuan style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan}  allPrice={allpriceQuan} selectedFooderDelect={this._fooddelectedBtn}/>
+                            :<CarFoodPuTong style={styles.sectionViewStyle} itemFooderDelect={this.state.diBuPandhuan} selectedFooderDelect={this._fooddelectedBtn}
+                                            selectedFooderShanChu={this._FooderPuTongShanChu}/>
+                    }
+
+                </View>
+
 
         );
+
     }
+    static  navigationOptions = ({navigation,screenProps}) => ({
+        header:(
+
+            <NavigatorView
+                           searchButton={()=>navigation.state.params.btnJiOnPress(navigation) }
+                            bianjiBtn = {navigation.state.params?navigation.state.params.title:'编辑'}
+
+            />
+        )
+    });
 }
 const SectionStyles = StyleSheet.create({
     sectionHeaderStyle:{
@@ -324,7 +484,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     SectionStyle:{
-        backgroundColor:'blue',
+        backgroundColor:'#f4f4f4',
         width:SCREEN_WIDTH,
         height:SCREEN_HEIGHT-98/2-64
 

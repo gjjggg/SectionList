@@ -37,6 +37,8 @@ const metul = require('./images/btnM-l.png');
 import SouSuoVC  from  './Home/SouSuo/sousuo';
 import SouSuoListVC from  './FenLei/SouSuoList/SeachList'
 
+import ZheXianJS from  './Me/ZheXianJs'
+
 const MyTab = TabNavigator({
     ShouYe: {
         screen: ShouYe,
@@ -144,6 +146,9 @@ const MyNav = StackNavigator({
     },
     SouSuoListVC:{
         screen:SouSuoListVC,
+    },
+    ZheXianJS:{
+       screen:ZheXianJS,
     }
 
 });

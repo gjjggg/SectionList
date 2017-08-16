@@ -42,7 +42,7 @@ export default class Home extends Component {
        // console.log('shouldComponentUpdate','组件要不要更新');
         return true;
     }
-    // 组件将要更新
+    // 组件将要更新{
     componentWillUpdate(){
       //  console.log('componentWillUpdate','组件将要更新');
     }
