@@ -13,8 +13,8 @@ import ZheXian from '../Me/ZheXianJs'
 export default class Fenlei extends Component {
     render() {
         return (
-           //<Menu />
-            <ZheXian />
+           <Menu />
+
         );
     }
 }

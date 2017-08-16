@@ -14,13 +14,14 @@ import {
     SectionList,
     TouchableOpacity,
 } from 'react-native';
-
+import Chart from 'react-native-chart';
 export default class dingdanCell extends Component {
 
     static  defaultProps = {
 
         selectedHeader:React.PropTypes.object,
         foderSection:React.PropTypes.object,
+
         data: [
 
             {
@@ -44,8 +45,11 @@ export default class dingdanCell extends Component {
                 ]
             }
 
-        ]
+        ],
+
     }
+
+
     // 构造
       constructor(props) {
         super(props);
@@ -96,7 +100,26 @@ export default class dingdanCell extends Component {
     _renderItem=()=>{
         return(
           <View style={styles.itemCell}>
+              <Chart
+                  style={styles.chart}
+                  data={[[
+                      [1, 1],
+                      [1, 3],
+                      [1, 7],
+                      [4, 9],
+                  ]]}
 
+                  type="line"
+                  axisColor="#4f3ac5"
+                  color= "#4f3ac5"
+                  dataPointColor= "#1c1b20"
+                  dataPointFillColor= "#ff8202"
+                  lineWidth={1}
+                  showDataPoint={true}
+                  showAxis={true}
+                  gridColor="＃333333"
+
+              />
           </View>
 
         )
@@ -184,9 +207,19 @@ const styles = StyleSheet.create({
     },
     itemCell:{
         width:SCREEN_WIDTH,
-        height:40,
-        backgroundColor:'#f6dfaa'
+        height:200,
+        backgroundColor:'#f6dfaa',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
 
+    },
+    chart: {
+        marginLeft:0,
+        marginTop:0,
+        width:SCREEN_WIDTH,
+        height: 200,
+        backgroundColor:'#f6df3a'
     },
     sectionHeader:{
         width:SCREEN_WIDTH,
