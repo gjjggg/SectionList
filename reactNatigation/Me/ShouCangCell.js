@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#ffffff',
-        width:SCREEN_WIDTH/3,
+        width:SCREEN_WIDTH/2,
         height:125/2,
         borderRightColor:'#f4f4f4',
         borderRightWidth:0.5
