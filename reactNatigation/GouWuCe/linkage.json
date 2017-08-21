@@ -7,7 +7,7 @@
       {
         "sellerid": "305", //商家ID
         "seller_name": "奇峰商贸有限公司",//商家名称
-        "dataee": [//商品列表
+        "data": [//商品列表
           {
             "cartId": "2631845",//购物车ID
             "goodsid": "24254",//商品ID
@@ -33,7 +33,7 @@
       {
         "sellerid": "495",
         "seller_name": "杰辉商贸有限公司",
-        "dataee": [
+        "data": [
           {
             "cartId": "2631846",
             "goodsid": "24240",
@@ -79,7 +79,7 @@
       {
         "sellerid": "448",
         "seller_name": "品牌手机专营店",
-        "dataee": [
+        "data": [
           {
             "cartId": "2631850224",
             "goodsid": "22648",

@@ -96,14 +96,15 @@ export default class gouwuche extends Component {
         },(error)=>{
             var linkData = linkAge.data
             var goodListArr = linkData.goodsList;
-          //  console.log('kkkkkk')
+
             goodListArr.forEach((value, index)=>{
                 value["flag"] = "NO"
-                goodListArr[index].data.forEach((valueeee, indexxx)=>{
+                console.log(value)
+                value.data.forEach((valueeee, indexxx)=>{
                     valueeee["flag"] = "NO"
                 })
             })
-          //  console.log(goodListArr)
+            console.log(goodListArr)
             this.setState({
 
                 allData:goodListArr,
@@ -188,24 +189,7 @@ export default class gouwuche extends Component {
 
         var goodListArr = this.state.allData;
 
-        //
-        // this.state.allData.forEach((value, index)=>{
-        //
-        //     if ( value["flag"] === "YES"){
-        //         console.log('kdjfhdsghfjdgfdjghshfdgdgkfdgdsfjdhfgfdjhgdfghdbfvfhbvfdgvbdfvbdfhvdfbvhdfvfvfhvhfvb')
-        //        goodListArr.splice(index, 1);
-        //        // goodListArr.remove(index-1)
-        //         --index
-        //     }else{
-        //     value.data.forEach((valueeee, indexxx)=>{
-        //         if ( valueeee["flag"] === "YES") {
-        //             goodListArrvalue.data.splice(indexxx, 1);
-        //            // value.data.remove(indexxx)
-        //             --index
-        //         }
-        //     })
-        //     }
-        // })
+
         for(let i=0;i<goodListArr.length;i++){
             if(goodListArr[i]["flag"]=== "YES"){
                 goodListArr.splice(i, 1);
@@ -400,17 +384,13 @@ export default class gouwuche extends Component {
 
         })
       console.log('chsdghdsfgdhfdsghdbvcvcb cv bncv chdfvhdfvdghvdbvcvncxbvcxhvjhcjxz')
-        console.log(this.state.allData)
+        console.log(this.state.allData.length)
         return (
 
-            this.state.allData.length  == 0 ?
-                <View style={[styles.container,{backgroundColor:'white'}]}>
-                    <Text>
-                        暂无商品
-                    </Text>
+           this.state.allData.length ?
 
-                </View>
-            :  <View style={styles.container}>
+
+            <View style={styles.container}>
                     <SectionList
                         style={styles.SectionStyle}
                         //滑动
@@ -430,7 +410,13 @@ export default class gouwuche extends Component {
                                             selectedFooderShanChu={this._FooderPuTongShanChu}/>
                     }
 
-                </View>
+                </View>:
+               <View style={[styles.container,{backgroundColor:'white'}]}>
+                   <Text>
+                       暂无商品
+                   </Text>
+
+               </View>
 
 
         );
