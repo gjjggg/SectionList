@@ -116,8 +116,8 @@ export default class me extends Component {
                style={styles.container}
                contentContainerStyle={{ flexDirection: 'row',//设置横向布局
                    flexWrap: 'wrap',  }}
-               ListHeaderComponent
-              // renderSectionHeader={this.headerSectionList}
+              // ListHeaderComponent
+              renderSectionHeader={this.headerSectionList}
                sections = {[
                    {key: 's1',  data: [{"titlebig":"商品收藏","numtitle":"3"},{"titlebig":"店铺收藏","numtitle":"6"},{"titlebig":"我的关注","numtitle":"0"}],renderItem:this._renderShouCangItemCell,  },
                    {key: 's2',data: [{"titlebig":"待付款","numtitle":"3"},{"titlebig":"代发货","numtitle":"6"},{"titlebig":"待收货","numtitle":"0"},{"titlebig":"待评价","numtitle":"6"},{"titlebig":"退款/售后","numtitle":"0"}],renderItem:this._renderDingDanItemCell},
